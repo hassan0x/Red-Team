@@ -1,5 +1,5 @@
-getuid
-pwd
+getuid__
+pwd_
 ls
 ps
 run systeminfo

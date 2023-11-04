@@ -165,11 +165,11 @@ Find-DomainUserLocation -UserIdentity "ITSupport"
 ## INFO5
 
 ### Enumerate All The Domain ACLs For Non BuiltIn Users With Modification Access
-```
+```powershell
 Find-InterestingDomainAcl -ResolveGUIDs -WarningAction:SilentlyContinue | select IdentityReferenceName,ObjectDN,ActiveDirectoryRights,ObjectAceType
 ```
 
 ### Enumerate all the special ACLs
-```
+```powershell
 Get-DomainObjectAcl -ResolveGUIDs | ? { $_.ActiveDirectoryRights -match "GenericAll|WriteDacl|WriteOwner|GenericWrite" -and $_.SecurityIdentifier -match "S-1-5-21-410602843-3916082903-3170366279-[\d]{4,10}" } | select SecurityIdentifier,ObjectDN,ActiveDirectoryRights,ObjectAceType | fl
 ```

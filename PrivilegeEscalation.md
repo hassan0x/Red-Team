@@ -1,4 +1,5 @@
-### SharpUp (https://github.com/GhostPack/SharpUp)
+### SharpUp
+https://github.com/GhostPack/SharpUp
 ```
 execute-assembly /root/SharpUp.exe audit
 execute-assembly /root/SharpUp.exe audit UnquotedServicePath

@@ -1,9 +1,11 @@
+### Info commands
 getuid<br>
 pwd<br>
 ls<br>
 ps<br>
-run systeminfo<br>
+run systeminfo<be>
 
+### Cobalt net command
 net domain<br>
 net domain_controllers<br>
 net computers<br>
@@ -14,8 +16,9 @@ net group \\hydra-dc<br>
 net logons<br>
 net logons \\hydra-dc<br>
 net share<br>
-net share \\hydra-dc<br>
+net share \\hydra-dc<be>
 
+### Native net command
 shell net user<br>
 shell net user /domain<br>
 shell net localgroup<br>

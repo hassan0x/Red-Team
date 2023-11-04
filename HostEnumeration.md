@@ -1,5 +1,5 @@
 ### Info commands
-```shell
+```
 getuid
 pwd
 ls
@@ -8,7 +8,7 @@ run systeminfo
 ```
 
 ### Cobalt net command
-```shell
+```
 net domain
 net domain_controllers
 net computers
@@ -23,7 +23,7 @@ net share \\hydra-dc
 ```
 
 ### Native net command
-```shell
+```
 shell net user
 shell net user /domain
 shell net localgroup
@@ -34,7 +34,7 @@ shell net view \\hydra-dc /all
 ```
 
 ### Seatbelt (https://github.com/GhostPack/Seatbelt)
-```shell
+```
 execute-assembly /root/Seatbelt.exe AntiVirus
 execute-assembly /root/Seatbelt.exe -group=all
 execute-assembly /root/Seatbelt.exe -group=system

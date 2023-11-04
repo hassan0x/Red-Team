@@ -1,36 +1,36 @@
 ### Info commands
 ```
-getuid<br>
-pwd<br>
-ls<br>
-ps<br>
-run systeminfo<be>
+getuid
+pwd
+ls
+ps
+run systeminfo
 ```
 
 ### Cobalt net command
 ```
-net domain<br>
-net domain_controllers<br>
-net computers<br>
-net user<br>
-net user \\hydra-dc<br>
-net localgroup<br>
-net group \\hydra-dc<br>
-net logons<br>
-net logons \\hydra-dc<br>
-net share<br>
-net share \\hydra-dc<be>
+net domain
+net domain_controllers
+net computers
+net user
+net user \\hydra-dc
+net localgroup
+net group \\hydra-dc
+net logons
+net logons \\hydra-dc
+net share
+net share \\hydra-dc
 ```
 
 ### Native net command
 ```
-shell net user<br>
-shell net user /domain<br>
-shell net localgroup<br>
-shell net group /domain<br>
-shell net share<br>
-shell net view \\localhost /all<br>
-shell net view \\hydra-dc /all<br>
+shell net user
+shell net user /domain
+shell net localgroup
+shell net group /domain
+shell net share
+shell net view \\localhost /all
+shell net view \\hydra-dc /all
 ```
 
 ### Seatbelt (https://github.com/GhostPack/Seatbelt)

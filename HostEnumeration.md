@@ -1,4 +1,4 @@
-getuid
+getuid\n
 pwd
 ls
 ps

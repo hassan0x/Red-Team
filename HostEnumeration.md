@@ -1,9 +1,11 @@
 ### Info commands
+```
 getuid<br>
 pwd<br>
 ls<br>
 ps<br>
 run systeminfo<be>
+```
 
 ### Cobalt net command
 net domain<br>

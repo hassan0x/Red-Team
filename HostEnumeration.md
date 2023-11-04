@@ -8,6 +8,7 @@ run systeminfo<be>
 ```
 
 ### Cobalt net command
+```
 net domain<br>
 net domain_controllers<br>
 net computers<br>
@@ -19,8 +20,10 @@ net logons<br>
 net logons \\hydra-dc<br>
 net share<br>
 net share \\hydra-dc<be>
+```
 
 ### Native net command
+```
 shell net user<br>
 shell net user /domain<br>
 shell net localgroup<br>
@@ -28,9 +31,12 @@ shell net group /domain<br>
 shell net share<br>
 shell net view \\localhost /all<br>
 shell net view \\hydra-dc /all<br>
+```
 
 ### Seatbelt (https://github.com/GhostPack/Seatbelt)
-execute-assembly /root/Seatbelt.exe AntiVirus<br>
-execute-assembly /root/Seatbelt.exe -group=all<br>
-execute-assembly /root/Seatbelt.exe -group=system<br>
-execute-assembly /root/Seatbelt.exe -group=user<br>
+```
+execute-assembly /root/Seatbelt.exe AntiVirus
+execute-assembly /root/Seatbelt.exe -group=all
+execute-assembly /root/Seatbelt.exe -group=system
+execute-assembly /root/Seatbelt.exe -group=user
+```

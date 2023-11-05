@@ -2,11 +2,10 @@
 Red Team Guide
 
 - Initial Access
-- Host
-	Reconnaissance
-	Persistence (User, Admin)
-	Escalation
-	Credential Access (User, Admin)
+- Host Reconnaissance
+- Persistence (User, Admin)
+- Escalation
+- Credential Access (User, Admin)
 - Domain Reconnaissance
 - User Impersonation
 - Lateral Movement & Pivoting
@@ -17,6 +16,3 @@ Red Team Guide
 - Domain Dominance
 - Forest & Trusts
 - Evasion
-	LAPS
-	APPLocker
-	Antivirus

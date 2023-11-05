@@ -7,8 +7,8 @@ Get-DomainOU -GPLink {CE680C75-3791-428D-BE7E-E75DDF297BE4} | % {Get-DomainCompu
 ```
 
 ### 2. Enumerate Domain GPOs then search for Restricted Groups in GptTmpl.inf & Groups.xml
-Get-GptTmpl "\\{Domain}\SysVol\{Domain}\Policies\{ID}\MACHINE\Microsoft\Windows NT\SecEdit\GptTmpl.inf"
-Get-GroupsXML "\\{Domain}\SysVol\{Domain}\Policies\{ID}\MACHINE\Preferences\Groups\Groups.xml"
+- Get-GptTmpl "\\{Domain}\SysVol\{Domain}\Policies\{ID}\MACHINE\Microsoft\Windows NT\SecEdit\GptTmpl.inf"
+- Get-GroupsXML "\\{Domain}\SysVol\{Domain}\Policies\{ID}\MACHINE\Preferences\Groups\Groups.xml"
 ```powershell
 Get-DomainGPOLocalGroup
 ```

